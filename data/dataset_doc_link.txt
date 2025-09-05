@@ -1,0 +1,1 @@
+https://docs.ultralytics.com/it/datasets/classify/mnist/#what-is-the-mnist-dataset-and-why-is-it-important-in-machine-learning
