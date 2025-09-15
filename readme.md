@@ -1,4 +1,4 @@
-# OCR_MNIST_Dataset
+# GTZAN_Genre_Recognizer
 
 Project about Fondamenti di Machine Learning - Università degli Studi di Verona - A.A. 2024/2025
 
@@ -9,8 +9,26 @@ Project about Fondamenti di Machine Learning - Università degli Studi di Verona
 
 ## System Objectives
 
-The research project management system is designed to detect handwritten text from images (OCR technology).
-The testing dataset is obtain from MNIST
+The project target is about create a system that recognize the genre of a input music
+The testing dataset is obtain from GTZAN (https://www.tensorflow.org/datasets/catalog/gtzan)
+
+---
+
+## Dataset details
+
+The dataset consists of 1000 audio tracks each 30 seconds long. It contains 10 genres, each represented by 100 tracks. The tracks are all 22050Hz Mono 16-bit audio files in .wav format.
+
+The genres are:
+* blues
+* classical
+* country
+* disco
+* hiphop
+* jazz
+* metal
+* pop
+* reggae
+* rock
 
 ---
 
