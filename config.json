@@ -1,0 +1,24 @@
+{
+    "data_dir": "data/genres",
+    "download_missing_dataset": true,
+    "genres": [
+        "blues",
+        "classical",
+        "country",
+        "disco",
+        "hiphop",
+        "jazz",
+        "metal",
+        "pop",
+        "reggae",
+        "rock"
+    ],
+    "install_missing_libraries": true,
+    "libraries": [
+        "librosa",
+        "nbformat",
+        "numpy",
+        "pandas",
+        "tqdm"
+    ]
+}
