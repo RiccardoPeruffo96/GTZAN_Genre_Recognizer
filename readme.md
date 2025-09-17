@@ -1,4 +1,4 @@
-# GTZAN_Genre_Recognizer
+# GTZAN Genre Recognizer
 
 Project about Fondamenti di Machine Learning - Università degli Studi di Verona - A.A. 2024/2025
 

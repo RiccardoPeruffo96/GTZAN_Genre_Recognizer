@@ -1,0 +1,2 @@
+https://www.tensorflow.org/datasets/catalog/gtzan
+https://www.kaggle.com/datasets/achgls/gtzan-music-genre/data
