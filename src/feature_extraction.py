@@ -20,7 +20,6 @@ _DEFAULTS = {
     "ROLLOFF_PERCENT": 0.85,
 }
 
-
 def _load_defaults_from_config() -> dict:
     """Try to read `config.json` from the project root and return audio defaults.
 
@@ -51,9 +50,8 @@ def _load_defaults_from_config() -> dict:
             continue
     return _DEFAULTS.copy()
 
-
-# Load defaults at import time (safe, small operation)
-_CFG = _load_defaults_from_config()
+# Load defaults at import time
+_CFG = _load_defaults_from_config() # configuration parameters
 SR = _CFG["SR"]
 N_FFT = _CFG["N_FFT"]
 HOP = _CFG["HOP"]

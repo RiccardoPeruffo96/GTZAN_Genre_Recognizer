@@ -29,5 +29,6 @@
         "pandas",
         "tqdm"
     ],
-    "recalculate_features_always": false
+    "recalculate_features_always": false,
+    "repository": "achgls/gtzan-music-genre"
 }
