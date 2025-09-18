@@ -1,6 +1,14 @@
 {
+    "audio_defaults": {
+        "SR": 22050,
+        "N_FFT": 2048,
+        "HOP": 512,
+        "MFCC_N": 13,
+        "ROLLOFF_PERCENT": 0.85
+    },
     "data_dir": "data/genres",
     "download_missing_dataset": true,
+    "features_dir": "data/features",
     "genres": [
         "blues",
         "classical",
