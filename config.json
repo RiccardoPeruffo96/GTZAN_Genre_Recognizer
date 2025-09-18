@@ -24,6 +24,7 @@
     "install_missing_libraries": true,
     "libraries": [
         "librosa",
+        "matplotlib",
         "nbformat",
         "numpy",
         "pandas",
