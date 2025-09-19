@@ -6,11 +6,12 @@ Provides:
 
 This module is intentionally dependency-light at import-time. It imports numpy and librosa when needed by the functions.
 """
-from typing import Tuple
-import numpy as np
 import json
+import librosa
+import numpy as np
 import os
 from pathlib import Path
+from typing import Tuple
 
 _DEFAULTS = {
     "SR": 22050,
@@ -68,11 +69,11 @@ def _agg_stats(x: np.ndarray) -> Tuple[float, float]:
     return float(np.mean(x)), float(np.std(x))
 
 def extract_features(path: str,
-                     sr: int = SR,
-                     n_fft: int = N_FFT,
-                     hop_length: int = HOP,
-                     n_mfcc: int = MFCC_N,
-                     rolloff_percent: float = ROLLOFF_PERCENT) -> np.ndarray:
+                     sr: int = 22050,
+                     n_fft: int = 2048,
+                     hop_length: int = 512,
+                     n_mfcc: int = 13,
+                     rolloff_percent: float = 0.85) -> np.ndarray:
     """Extract a fixed-length feature vector from an audio file.
 
     The returned vector concatenates aggregated statistics (mean,std)
@@ -83,7 +84,6 @@ def extract_features(path: str,
     Parameters mirror those used elsewhere in the notebooks so the
     function can be called without passing values.
     """
-    import librosa
 
     y, sr = librosa.load(path, sr=sr, mono=True)
     S = np.abs(librosa.stft(y, n_fft=n_fft, hop_length=hop_length))
