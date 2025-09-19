@@ -2,6 +2,10 @@
 ### NOT TESTED YET ###
 ######################
 
+# Download zip in 'data/GTZAN.zip' (no unzip)
+import os
+import zipfile
+
 # Script copied from Kaggle documentation 
 try:
     try:
@@ -50,13 +54,10 @@ DATA_DIR = _CFG["DATA_DIR"]
 INSTALL_MISSING_LIBRARIES = _CFG["INSTALL_MISSING_LIBRARIES"]
 REPOSITORY = _CFG["REPOSITORY"]
 
-# Download zip in 'data/GTZAN.zip' (no unzip)
-import os
-import zipfile
-
 os.makedirs('data', exist_ok=True)
 zip_path = os.path.join('data', 'GTZAN.zip')
-downloaded_path = kagglehub.dataset_download(REPOSITORY, unzip=False)
+kagglehub.login(username="your_username", key="your_api_key")
+downloaded_path = kagglehub.dataset_download(REPOSITORY, path=zip_path, unzip=False)
 # move and rename file
 if downloaded_path != zip_path:
     try:
