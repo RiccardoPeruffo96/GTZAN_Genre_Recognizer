@@ -6,6 +6,7 @@
         "MFCC_N": 13,
         "ROLLOFF_PERCENT": 0.85
     },
+    "best_model_prefix": "best_model_",
     "cross_validation_folds_number": 5,
     "data_dir": "data/genres",
     "download_missing_dataset": true,
@@ -32,6 +33,6 @@
         "tqdm"
     ],
     "random_state": 42,
-    "recalculate_features_always": true,
+    "recalculate_features_always": false,
     "repository": "achgls/gtzan-music-genre"
 }
