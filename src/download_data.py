@@ -3,23 +3,17 @@
 ######################
 
 # Download zip in 'data/GTZAN.zip' (no unzip)
+import importlib
+import json
 import os
+from pathlib import Path
+import subprocess
+import sys
 import zipfile
-
-# Script copied from Kaggle documentation 
-try:
-    try:
-        __import__(kagglehub)
-    except ImportError:
-        if INSTALL_MISSING_LIBRARIES:
-            print(f"Installing kagglehub library...")
-            !python "{script_download_missing_library}" "kagglehub"
-    import kagglehub
-except ImportError:
-    raise ImportError("Mandatory libraries not founds: kagglehub -> Run the following command to install it: pip install kagglehub")
+from os_path_management import adapt_path
 
 # Step 1
-_DEFAULTS = { "INSTALL_MISSING_LIBRARIES": True, "REPOSITORY": "achgls/gtzan-music-genre" }
+_DEFAULTS = { "DATA_DIR": adapt_path("data/genres"), "DOWNLOAD_MISSING_DATASET": True, "INSTALL_MISSING_LIBRARIES": True, "REPOSITORY": "achgls/gtzan-music-genre" }
 
 def _load_defaults_from_config() -> dict:
     """Try to read `config.json` from the project root and return audio defaults.
@@ -40,7 +34,8 @@ def _load_defaults_from_config() -> dict:
                 # Validate and coerce types
                 out = {}
                 out["DATA_DIR"] = cfg.get("data_dir", _DEFAULTS["DATA_DIR"])
-                out["INSTALL_MISSING_LIBRARIES"] = cfg.get("install_missing_libraries", _DEFAULTS["REPOSITORY"])
+                out["DOWNLOAD_MISSING_DATASET"] = cfg.get("download_missing_dataset", _DEFAULTS["DOWNLOAD_MISSING_DATASET"])
+                out["INSTALL_MISSING_LIBRARIES"] = cfg.get("install_missing_libraries", _DEFAULTS["INSTALL_MISSING_LIBRARIES"])
                 out["REPOSITORY"] = cfg.get("repository", _DEFAULTS["REPOSITORY"])
                 return out
         except Exception:
@@ -51,13 +46,27 @@ def _load_defaults_from_config() -> dict:
 # Load defaults at import time
 _CFG = _load_defaults_from_config() # configuration parameters
 DATA_DIR = _CFG["DATA_DIR"]
+DOWNLOAD_MISSING_DATASET = _CFG["DOWNLOAD_MISSING_DATASET"]
 INSTALL_MISSING_LIBRARIES = _CFG["INSTALL_MISSING_LIBRARIES"]
 REPOSITORY = _CFG["REPOSITORY"]
 
+# Script copied from Kaggle documentation 
+try:
+    try:
+        importlib.import_module("kagglehub")
+    except ImportError:
+        if INSTALL_MISSING_LIBRARIES:
+            print("Installing kagglehub via pip...")
+            subprocess.check_call([sys.executable, "-m", "pip", "install", "kagglehub"])
+    import kagglehub
+except ImportError:
+    raise ImportError("Mandatory libraries not founds: kagglehub -> Run the following command to install it: pip install kagglehub")
+
 os.makedirs('data', exist_ok=True)
 zip_path = os.path.join('data', 'GTZAN.zip')
-kagglehub.login(username="your_username", key="your_api_key")
-downloaded_path = kagglehub.dataset_download(REPOSITORY, path=zip_path, unzip=False)
+#temporary credentials
+#kagglehub.login(username="rporki", key="1b38f0653a251cf116c146989ba760df")
+downloaded_path = kagglehub.dataset_download("achgls/gtzan-music-genre")
 # move and rename file
 if downloaded_path != zip_path:
     try:
@@ -69,10 +78,11 @@ if downloaded_path != zip_path:
         os.remove(downloaded_path)
 
 # Extract in 'data/genres/'
-extract_dir = os.path(DATA_DIR)
-os.makedirs(extract_dir, exist_ok=True)
+zip_extract_dir = os.path.join('data', 'genres')
+#extract_dir = os.path(DATA_DIR)
+os.makedirs(zip_extract_dir, exist_ok=True)
 with zipfile.ZipFile(zip_path, 'r') as zip_ref:
-    zip_ref.extractall(extract_dir)
+    zip_ref.extractall(zip_extract_dir)
 
 print("Dataset downloaded path:", zip_path)
-print("Dataset extracted path:", extract_dir)
+print("Dataset extracted path:", zip_extract_dir)
