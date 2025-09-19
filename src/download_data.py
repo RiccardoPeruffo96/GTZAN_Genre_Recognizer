@@ -64,7 +64,6 @@ except ImportError:
 
 os.makedirs('data', exist_ok=True)
 zip_path = os.path.join('data', 'GTZAN.zip')
-#temporary credentials
 downloaded_path = kagglehub.dataset_download("achgls/gtzan-music-genre")
 # move and rename file
 if downloaded_path != zip_path:
