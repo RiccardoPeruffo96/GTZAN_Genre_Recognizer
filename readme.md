@@ -25,7 +25,7 @@ The project utilizes the GTZAN dataset, a benchmark dataset for music genre clas
 
 - **Source**: [GTZAN Dataset](https://www.kaggle.com/datasets/achgls/gtzan-music-genre/data)
 - **Size**: 1000 audio tracks (30 seconds each)
-- **Format**: 22050Hz Mono 16-bit WAV files
+- **Format**: 22050Hz Mono 16-bit WAV (or AU) files
 - **Classes**: 10 genres with 100 tracks each
   * Blues
   * Classical
