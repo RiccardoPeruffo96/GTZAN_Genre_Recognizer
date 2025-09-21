@@ -111,11 +111,18 @@ def extract_features(path: str,
     tempo, _ = librosa.beat.beat_track(y=y, sr=sr, hop_length=hop_length)
     tempo = 0.0 if np.isnan(tempo) else float(tempo)
 
+    # Concatenate all features into a single vector
     features = np.array(
-        mfcc_stats + chroma_stats + contrast_stats +
-        list(centroid_stats) + list(bandwidth_stats) +
-        list(rolloff_stats) + list(zcr_stats) + list(rms_stats) +
+        mfcc_stats +
+        chroma_stats +
+        contrast_stats +
+        list(centroid_stats) +
+        list(bandwidth_stats) +
+        list(rolloff_stats) +
+        list(zcr_stats) +
+        list(rms_stats) +
         [tempo],
         dtype=np.float32,
     )
+    
     return features

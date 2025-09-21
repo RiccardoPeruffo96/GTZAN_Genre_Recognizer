@@ -45,7 +45,7 @@ The project utilizes the GTZAN dataset, a benchmark dataset for music genre clas
 ```
 GTZAN_Genre_Recognizer/
 ├── data/
-│   └── genres/           # Dataset directory (created after download)
+│   └── genres/                       # Dataset directory (created after download)
 │       ├── blues/
 │       │   ├── blues.00000.au
 │       │   ├── ...
@@ -54,22 +54,23 @@ GTZAN_Genre_Recognizer/
 │       │   ├── classical.00000.au
 │       │   └── ...
 │       └── ...
-├── models/               # Saved trained models
-├── notebooks/           
-│   ├── 01_download.ipynb # Dataset acquisition
-│   ├── 02_features.ipynb # Feature extraction exploration
-│   ├── 03_training.ipynb # Model training and evaluation
-│   └── 04_comparison.ipynb # Model comparison
+├── models/                           # Saved trained models
+├── notebooks/
+│   ├── 01_download.ipynb             # Dataset acquisition
+│   ├── 02_features.ipynb             # Feature extraction exploration
+│   ├── 03_training.ipynb             # Model training and evaluation
+│   └── 04_evaluation.ipynb           # Model evaluation
 ├── reports/
-│   ├── dataset_doc_link.txt  # Dataset download links
-│   └── presentation.pptx # PPT presentation about the result
+│   ├── dataset_doc_link.txt          # Dataset download links
+│   └── presentation.pptx             # PPT presentation
+│   └── Technical_Report.pdf          # PDF technical report
 ├── src/
-│   ├── download_data.py  # Dataset download utilities [not used]
-│   ├── download_missing_library.py  # Script to download missing package
-│   ├── feature_extraction.py # Audio feature extraction
-│   └── os_path_management.py # Path handling across platforms
-├── config.json          # Configuration parameters
-├── GTZAN_Project.ipynb  # Entry point software
+│   ├── download_data.py              # Dataset download utilities [not used]
+│   ├── download_missing_library.py   # Script to download missing package
+│   ├── feature_extraction.py         # Audio feature extraction
+│   └── os_path_management.py         # Path handling across platforms
+├── config.json                       # Configuration parameters
+├── GTZAN_Project.ipynb               # Entry point software
 └── README.md
 ```
 
@@ -81,7 +82,7 @@ GTZAN_Genre_Recognizer/
 - **Multiple Classification Models**: Implements and compares various algorithms (Random Forest, SVM, etc.)
 - **Cross-Platform Compatibility**: Works across different operating systems
 - **Configurable Parameters**: Audio processing parameters can be modified via config.json
-- **Jupyter Notebooks**: Step-by-step workflow from data acquisition to inference
+- **Jupyter Notebooks**: Step-by-step workflow from data acquisition to evaluation
 
 ---
 
